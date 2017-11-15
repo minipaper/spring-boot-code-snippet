@@ -1,0 +1,37 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.batch.repository.MysqlMapper">
+    <select id="findAll" resultType="DatabaseInfo">
+        SELECT
+        SEQ AS seq,
+        DESCRIPTION AS description
+        FROM DATABASE_INFO
+    </select>
+
+    <select id="findOne" resultType="DatabaseInfo" parameterType="Long">
+        SELECT
+        SEQ AS seq,
+        DESCRIPTION AS description
+        FROM DATABASE_INFO
+        WHERE DATABASE_INFO.seq = #{value}
+    </select>
+
+    <insert id="save" parameterType="com.example.batch.repository.domain.DatabaseInfo">
+        INSERT INTO DATABASE_INFO (
+        DESCRIPTION
+        )
+        VALUES (
+        #{description}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.example.batch.repository.domain.DatabaseInfo">
+        UPDATE DATABASE_INFO SET
+        DESCRIPTION = #{description}
+        WHERE DATABASE_INFO.seq = #{seq}
+    </update>
+
+    <delete id="delete" parameterType="com.example.batch.repository.domain.DatabaseInfo">
+        DELETE FROM DATABASE_INFO WHERE DATABASE_INFO.seq = #{seq}
+    </delete>
+
+</mapper>

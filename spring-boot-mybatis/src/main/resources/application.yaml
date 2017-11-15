@@ -1,0 +1,16 @@
+#spring.datasource.schema=classpath:import.sql
+#mybatis.config-location=classpath:mybatis-config.xml
+#logging.level.root=WARN
+#logging.level.sample.mybatis.mapper=TRACE
+
+# 최초 실행시 실행할 쿼리
+spring:
+  datasource:
+    schema: classpath:import.sql
+
+mybatis:
+  config-location: classpath:mybatis-config.xml
+logging:
+  level:
+    root: WARN
+    net.minipaper.sample.mapper: TRACE
