@@ -376,7 +376,7 @@ ng2boot/frontend/src/main/frontend 경로에 proxy.conf.json 파일을 생성하
 
 ## 8. 참고
 
-[github](https://github.com/minipaper/ng2boot)에서도 볼 수 있습니다.
+[github](https://github.com/minipaper/spring-boot-code-snippet/tree/master/spring-boot-ng2)에서도 볼 수 있습니다.
 
 참고 사이트
 [scaffold](https://blog.jdriven.com/2016/12/angular2-spring-boot-getting-started)
