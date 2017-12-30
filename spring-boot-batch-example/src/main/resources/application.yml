@@ -1,0 +1,44 @@
+spring:
+  profiles:
+    active: h2-local-db,initial
+  batch:
+    job:
+      enabled: false
+---
+spring:
+  profiles: h2-local-db
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:file:./h2db/batch;AUTO_SERVER=TRUE
+    username: sa
+    password: sa
+    platform: h2
+    type: org.apache.commons.dbcp2.BasicDataSource
+    dbcp2:
+      maxTotal: 10
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: true
+        naming_strategy: org.hibernate.cfg.ImprovedNamingStrategy
+  h2:
+    console:
+      enabled: true
+      path: /console
+
+---
+spring:
+  profiles: initial
+  datasource:
+    initialize: true
+  jpa:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: create
+          import_files: /scripts/default.sql
+          import_files_sql_extractor: org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor
