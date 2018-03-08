@@ -1,0 +1,35 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'net.minipaper'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+dependencies {
+	// compile project(':frontend')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+
+// 리소스 복사
+processResources {
+    from ('../frontend/dist/') {
+        into 'static'
+		// into 'public'
+    }
+}
+
+task copyToLib(type: Copy) {
+	println 'copyToLib'
+
+	from 'build/libs' //대상
+	into '../build/libs' //복사할 곳
+	// rename { String fileName ->
+	// 	fileName.replace("input", "output") //input-바꿀대상, output-원하는이름
+	// }
+}
+
+build.finalizedBy(copyToLib)
